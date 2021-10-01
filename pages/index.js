@@ -43,6 +43,9 @@ export async function getStaticProps() {
   const json = await res.json()
   if (res.status !== 200) {
     console.error(json)
+    if (!process.env.GITHUB_TOKEN) {
+      console.log('token is empty')
+    }
     throw new Error('Failed to fetch API')
   }
 
