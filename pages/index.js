@@ -22,12 +22,12 @@ export async function getStaticProps() {
   const res = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
-      Authorization: `bearer ${process.env.GITHUB_TOKEN}`
+      Authorization: `bearer ${process.env.secrets.GITHUB_TOKEN}`
     },
     body: JSON.stringify({
       query: `query {
-        repository(owner:"chibicode", name:"reactions") {
-          issue(number:1) {
+        repository(owner:"aws-amplify", name:"amplify-console") {
+          issue(number:1860) {
             reactionGroups {
               content
               users(first: 0) {
@@ -81,7 +81,7 @@ export default function Home({ reactions }) {
         <h2>Static Reactions Demo</h2>
         <h3>
           Reactions on{' '}
-          <a href='https://github.com/chibicode/reactions/issues/1'>
+          <a href='https://github.com/aws-amplify/amplify-console/issues/1860'>
             this GitHub issue
           </a>
           :
@@ -149,7 +149,7 @@ export default function Home({ reactions }) {
         </ol>
         <div>
           <strong>Source:</strong>{' '}
-          <a href='https://github.com/chibicode/reactions/blob/master/pages/index.js'>
+          <a href='https://github.com/siegerts/reactions/blob/master/pages/index.js'>
             pages/index.js
           </a> - `getStaticProps()` fetches the data during static generation, and `revalidate` specifies the timeout.
         </div>
