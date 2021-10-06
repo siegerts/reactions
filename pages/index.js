@@ -19,7 +19,6 @@ export async function getStaticProps() {
   //     }
   //   }
   // }
-  console.log("TOKEN IS ", process.env.GITHUB_TOKEN);
   const res = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
